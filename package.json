@@ -1,0 +1,28 @@
+{
+  "name": "mern-backend",
+  "version": "1.0.0",
+  "description": "This is the backend of a whattodo app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliehutchinson001/MERN-backend.git"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "mongoose",
+    "node"
+  ],
+  "author": "Julie Hutchinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliehutchinson001/MERN-backend/issues"
+  },
+  "homepage": "https://github.com/juliehutchinson001/MERN-backend#readme",
+  "dependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

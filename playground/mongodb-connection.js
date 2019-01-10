@@ -10,6 +10,15 @@ request(
     json: true,
   },
   (error, response, body) => {
+    const latitude = body.results[0].locations[0].latLng.lat;
+    const longitude = body.results[0].locations[0].latLng.lng;
+
+    console.log(`Address: ${body.results[0].locations[0].street}`);
+    console.log(`Latitude: ${latitude}`);
+    console.log(`Longitude: ${longitude}`);
+    console.log(`--------------------------------`);
     console.log(JSON.stringify(response, null, 2));
+    console.log(`--------------------------------`);
+    console.log(JSON.stringify(error, null, 2));
   }
 );

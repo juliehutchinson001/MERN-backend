@@ -42,7 +42,7 @@
     "consistent-return": "off",
     "curly": "error",
     "global-require": "error",
-    "indent": ["error", "tab"],
+    "indent": ["error", "2"],
     "no-plusplus": [
       "error",
       {

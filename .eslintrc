@@ -26,7 +26,7 @@
       "only-multiline",
       {
         "arrays": "never",
-        "objects": "ignore",
+        "objects": "always",
         "imports": "never",
         "exports": "never",
         "functions": "ignore"
@@ -42,7 +42,7 @@
     "consistent-return": "off",
     "curly": "error",
     "global-require": "error",
-    "indent": ["error", "2"],
+    "indent": ["error", 2],
     "no-plusplus": [
       "error",
       {
@@ -72,7 +72,7 @@
       }
     ],
     "space-unary-ops": [
-      2,
+      "error",
       {
         "words": true,
         "nonwords": false,
@@ -83,7 +83,7 @@
       }
     ],
     "quotes": [
-      2,
+      "error",
       "single",
       {
         "avoidEscape": true,

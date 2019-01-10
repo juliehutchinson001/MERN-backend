@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../models/User');
+const User = require('../models/user');
 const authenticate = require('../middleware/authenticate');
 
 const router = express.Router();
@@ -13,13 +13,13 @@ router.post('/', (req, res) => {
     userId: firstName + lastName,
     email,
     password,
-	});
+  });
 
-	newUser
+  newUser
     .save()
-  		.then(() => newUser.generateAuthToken())
-      .then(token => res.header('x-auth', token).json({ firstName, lastName }))
-      .catch(error => res.status(400).json({ error }));
+    .then(() => newUser.generateAuthToken())
+    .then(token => res.header('x-auth', token).json({ firstName, lastName }))
+    .catch(error => res.status(400).json({ error }));
 });
 
 router.get('/me', authenticate, (req, res) => {

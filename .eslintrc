@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "prettier", "prettier/react"],
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {
@@ -14,36 +14,90 @@
     "node": true
   },
   "rules": {
-    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": false }],
-    "comma-dangle": ["warn", {
-      "arrays": "never",
-      "objects": "never",
-      "imports": "never",
-      "exports": "never",
-      "functions": "ignore"
-    }],
-    "comma-spacing": ["error", { "before": false, "after": true }],
+    "arrow-parens": [
+      "error",
+      "as-needed",
+      {
+        "requireForBlockBody": false
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline",
+      {
+        "arrays": "never",
+        "objects": "ignore",
+        "imports": "never",
+        "exports": "never",
+        "functions": "ignore"
+      }
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
     "consistent-return": "off",
     "curly": "error",
     "global-require": "error",
-    "indent":["error", "tab"],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "no-unused-vars": ["error", {
-      "vars": "local",
-      "args": "none"
-    }],
+    "indent": ["error", "tab"],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_id"]
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
     "no-var": "error",
     "prefer-const": "error",
-    "prefer-destructuring": ["warn", { "array": true, "object": true }],
+    "prefer-destructuring": [
+      "warn",
+      {
+        "array": true,
+        "object": true
+      }
+    ],
     "space-unary-ops": [
-      2, {
+      2,
+      {
         "words": true,
         "nonwords": false,
         "overrides": {
           "new": false,
           "++": true
         }
-  }]
-  }
+      }
+    ],
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 80
+      }
+    ]
+  },
+  "plugins": ["prettier"]
 }

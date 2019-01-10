@@ -43,6 +43,7 @@
     "curly": "error",
     "global-require": "error",
     "indent": ["error", 2],
+    "no-console": "off",
     "no-plusplus": [
       "error",
       {

@@ -28,22 +28,23 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tokens:[{
-    access: {
-      type: String,
-      required: true,
+  tokens: [
+    {
+      access: {
+        type: String,
+        required: true,
+      },
+      token: {
+        type: String,
+        required: true,
+      },
     },
-    token: {
-      type: String,
-      required: true,
-    },
-  }],
-
+  ],
 });
 
 UserSchema.methods.generateAuthToken = function generateAuthToken() {
   const access = 'auth';
-  const token = jwt.sign({ _id: this._id.toHexString(), access }, 'secret')
+  const token = jwt
+    .sign({ _id: this._id.toHexString(), access }, 'secret')
     .toString();
-
-}
+};

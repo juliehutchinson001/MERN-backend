@@ -1,24 +1,70 @@
-const request = require('request');
-const secretKey = require('../middleware/secret-keys');
+const { MongoClient, ObjectID } = require('mongodb');
 
-const googleKey = secretKey.googleMapKey;
-const location = '2859%20ne4th%20street%20florida';
+const url = 'mongodb://localhost:27017/TodoApp';
+const header = { useNewUrlParser: true };
 
-request(
-  {
-    url: `http://www.mapquestapi.com/geocoding/v1/address?key=${googleKey}&location=${location}`,
-    json: true,
-  },
-  (error, response, body) => {
-    const latitude = body.results[0].locations[0].latLng.lat;
-    const longitude = body.results[0].locations[0].latLng.lng;
+MongoClient.connect(
+  url,
+  header,
+  (err, client) => {
+    if (err) {
+      return console.log(`Couldn't connect to db`);
+    }
 
-    console.log(`Address: ${body.results[0].locations[0].street}`);
-    console.log(`Latitude: ${latitude}`);
-    console.log(`Longitude: ${longitude}`);
-    console.log(`--------------------------------`);
-    console.log(JSON.stringify(response, null, 2));
-    console.log(`--------------------------------`);
-    console.log(JSON.stringify(error, null, 2));
+    console.log('Connected to mongodb');
+
+    const db = client.db('TodoApp');
+
+    db.collection('Users').insertOne(
+      {
+        firstName: 'Juan',
+        lastName: 'Hurtado',
+        age: 27,
+        email: 'juanhurtado4@outlook.com',
+        date: new Date(),
+      },
+      (error, result) => {
+        if (error) {
+          console.log('could not insert new user');
+        } else {
+          console.log(JSON.stringify(result, null, 3));
+        }
+      }
+    );
+  }
+);
+
+MongoClient.connect(
+  url,
+  header,
+  (err, client) => {
+    if (err) {
+      return console.log('unable to connect to db');
+    }
+    console.log('connection successful');
+
+    const db = client.db('TodoApp');
+
+    db.collection('Users')
+      .findOneAndUpdate(
+        {
+          _id: new ObjectID('5c37b27f3966cc7fa84fc221'),
+        },
+        {
+          $rename: {
+            name: 'firstName',
+          },
+          $set: {
+            firstName: 'Julie',
+            lastName: 'Hutchinson',
+          },
+        },
+        {
+          returnOriginal: false,
+        }
+      )
+      .then(result => {
+        console.log(result);
+      });
   }
 );

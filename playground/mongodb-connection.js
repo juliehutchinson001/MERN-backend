@@ -31,6 +31,7 @@ MongoClient.connect(
         }
       }
     );
+    client.close();
   }
 );
 
@@ -47,24 +48,19 @@ MongoClient.connect(
 
     db.collection('Users')
       .findOneAndUpdate(
+        { _id: new ObjectID('5c37b27f3966cc7fa84fc221') },
         {
-          _id: new ObjectID('5c37b27f3966cc7fa84fc221'),
-        },
-        {
-          $rename: {
-            name: 'firstName',
-          },
+          $rename: { name: 'firstName' },
           $set: {
             firstName: 'Julie',
             lastName: 'Hutchinson',
           },
         },
-        {
-          returnOriginal: false,
-        }
+        { returnOriginal: false }
       )
       .then(result => {
         console.log(result);
       });
+    client.close();
   }
 );

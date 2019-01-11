@@ -44,7 +44,5 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.methods.generateAuthToken = function generateAuthToken() {
   const access = 'auth';
-  const token = jwt
-    .sign({ _id: this._id.toHexString(), access }, 'secret')
-    .toString();
+  const token = jwt.sign({ _id: this._id.toHexString(), access }, 'secret').toString();
 };

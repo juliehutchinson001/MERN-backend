@@ -1,13 +1,13 @@
 const express = require('express');
-const User = require('../models/user');
-const authenticate = require('../middleware/authenticate');
+const { UserSchema } = require('../models/user');
+// const authenticate = require('../middleware/authenticate');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+router.post('/', (request, response) => {
+  const { firstName, lastName, email, password } = request.body;
 
-  const newUser = new User({
+  const newUser = new UserSchema({
     firstName,
     lastName,
     userId: firstName + lastName,
@@ -17,14 +17,13 @@ router.post('/', (req, res) => {
 
   newUser
     .save()
-    .then(() => newUser.generateAuthToken())
-    .then(token => res.header('x-auth', token).json({ firstName, lastName }))
-    .catch(error => res.status(400).json({ error }));
+    .then(userNew => response.json({ userNew }))
+    .catch(error => response.status(400).json({ error }));
 });
 
-router.get('/me', authenticate, (req, res) => {
-  const { firstName, lastName } = req.user;
-  res.json({ firstName, lastName });
-});
+// router.get('/me', authenticate, (req, res) => {
+//   const { firstName, lastName } = req.user;
+//   res.json({ firstName, lastName });
+// });
 
 module.exports = router;

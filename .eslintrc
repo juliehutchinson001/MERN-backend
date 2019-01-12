@@ -2,9 +2,7 @@
   "extends": ["airbnb-base", "prettier", "prettier/react"],
   "parserOptions": {
     "ecmaVersion": 6,
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "ecmaFeatures": { "jsx": true }
   },
   "env": {
     "browser": true,
@@ -15,15 +13,9 @@
   },
   "rules": {
     "arrow-parens": [
-      "error",
-      "as-needed",
-      {
-        "requireForBlockBody": false
-      }
+      "error", "as-needed", { "requireForBlockBody": false }
     ],
-    "comma-dangle": [
-      "error",
-      "only-multiline",
+    "comma-dangle": [ "error", "only-multiline",
       {
         "arrays": "never",
         "objects": "always",
@@ -32,71 +24,34 @@
         "functions": "ignore"
       }
     ],
-    "comma-spacing": [
-      "error",
-      {
-        "before": false,
-        "after": true
-      }
-    ],
+    "comma-spacing": [ "error", { "before": false, "after": true }],
     "consistent-return": "off",
     "curly": "error",
     "global-require": "error",
     "indent": ["error", 2],
     "no-console": "off",
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": ["_id"]
-      }
-    ],
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "local",
-        "args": "none"
-      }
-    ],
+    "no-plusplus": [ "error", { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle": [ "error", { "allow": ["_id"] }],
+    "no-unused-vars": [ "error", { "vars": "local", "args": "none" }],
     "no-var": "error",
     "prefer-const": "error",
-    "prefer-destructuring": [
-      "warn",
-      {
-        "array": true,
-        "object": true
-      }
-    ],
+    "prefer-destructuring": ["warn", { "array": true, "object": true }],
     "space-unary-ops": [
-      "error",
-      {
+      "error", {
         "words": true,
         "nonwords": false,
-        "overrides": {
-          "new": false,
-          "++": true
-        }
+        "overrides": { "new": false, "++": true }
       }
     ],
     "quotes": [
-      "error",
-      "single",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
+      "error", "single",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
     "prettier/prettier": [
-      "error",
-      {
+      "error", {
         "bracketSpacing": true,
         "jsxSingleQuote": true,
-        "printWidth": 680,
+        "printWidth": 100,
         "proseWrap": "never",
         "semi": true,
         "singleQuote": true,

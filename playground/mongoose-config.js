@@ -13,11 +13,7 @@ const Interest = mongoose.model('Interests', {
 });
 
 const newInterest = new Interest({ text: 'Learn Node' });
-newInterest.save().then(
-  res => {
-    console.log(`Saved Interest: ${res}`);
-  },
-  err => {
-    console.log('Unable to save new interest');
-  }
-);
+newInterest
+  .save()
+  .then(res => console.log(`Saved Interest: ${res}`))
+  .catch(error => console.log(error));

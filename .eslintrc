@@ -1,7 +1,7 @@
 {
   "extends": ["airbnb-base", "prettier", "prettier/react"],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 9,
     "ecmaFeatures": { "jsx": true }
   },
   "env": {

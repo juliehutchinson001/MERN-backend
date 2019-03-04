@@ -65,5 +65,16 @@ UserSchema.pre('save', function hashPasswordBeforeSave(next) {
   }
 });
 
+UserSchema.methods.generateAuthToken = async function generateAuthToken() {
+  const access = 'auth';
+  const token = jwt
+    .sign({ _id: this._id.toHexString(), access }, process.env.JWT_SECRET)
+    .toString();
+
+  this.tokens = [...this.tokens, { access, token }];
+  await this.save();
+  return token;
+};
+
 
 module.exports = { User: mongoose.model('users', UserSchema) };

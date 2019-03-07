@@ -32,7 +32,18 @@ const UserSchema = new mongoose.Schema({
     minlength: 2,
     trim: true,
   },
-  
+  tokens: [
+    {
+      access: {
+        type: String,
+        required: true,
+      },
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
 UserSchema.pre('save', function hashPasswordBeforeSave(next) {
